@@ -1,0 +1,156 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --color-acero: rgb(91, 91, 91);
+    --color-agua: rgb(0, 120, 233);
+    --color-bicho: rgb(135, 255, 36);
+    --color-dragon: rgb(101, 32, 106);
+    --color-electrico: rgb(242, 255, 0);
+    --color-fantasma: rgb(64, 0, 61);
+    --color-fuego: rgb(247, 0, 0);
+    --color-hada: rgb(255, 0, 187);
+    --color-hielo: rgb(0, 255, 242);
+    --color-lucha: rgb(255, 115, 0);
+    --color-normal: rgb(129, 129, 129);
+    --color-planta: rgb(15, 112, 0);
+    --color-psiquico: rgb(246, 0, 123);
+    --color-roca: rgb(74, 55, 28);
+    --color-siniestro: rgb(36, 17, 1);
+    --color-tierra: rgb(63, 28, 0);
+    --color-veneno: rgb(125, 0, 144);
+    --color-volador: rgb(0, 103, 151);
+}
+
+header{
+    border: solid black 4px;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.tipos{
+    text-align: center;
+    background-color: violet;
+    color: blue;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.tipo{
+    width: 150px;
+    border-radius: 50px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.acero{
+  background-color: var(--color-acero);
+}
+.agua{
+  background-color: var(--color-agua);
+}
+.bicho{
+  background-color: var(--color-bicho);
+}
+.dragon{
+  background-color: var(--color-dragon);
+}
+.electrico{
+  background-color: var(--color-electrico);
+}
+.fantasma{
+  background-color: var(--color-fantasma);
+}
+.fuego{
+  background-color: var(--color-fuego);
+}
+.hada{
+  background-color: var(--color-hada);
+}
+.hielo{
+  background-color: var(--color-hielo);
+}
+.lucha{
+  background-color: var(--color-lucha);
+}
+.normal{
+  background-color: var(--color-normal);
+}
+.planta{
+  background-color: var(--color-planta);
+}
+.psiquico{
+  background-color: var(--color-psiquico);
+}
+.roca{
+  background-color: var(--color-roca);
+}
+.siniestro{
+  background-color: var(--color-siniestro);
+}
+.tierra{
+  background-color: var(--color-tierra);
+}
+.veneno{
+  background-color: var(--color-veneno);
+}
+.volador{
+  background-color: var(--color-volador);
+}
+
+.buscador {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+.search{
+  width: 500px;
+}
+
+main{
+  padding: 20px;
+}
+.carta{
+  background-color: rgb(255, 111, 0);
+  width: 250px;
+  height: fit-content;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  padding: 15px;
+}
+.nombrePokemon{
+  text-align: center;
+
+}
+.containerImagenPokemon{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imagenPokemon{
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.numeracion{
+  display: flex;
+  justify-content: flex-end;
+}

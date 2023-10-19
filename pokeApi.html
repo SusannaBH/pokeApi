@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pokeApi</title>
+    <link rel="stylesheet" href="stylePokeApi.css">
+</head>
+<body>
+    <header>
+        <h3 class="tipos">TIPOS</h3>
+        <nav class="flex">
+            <div id="acero" class="tipo acero"><span>⚙️</span> ACERO</div>
+            <div id="agua" class="tipo agua"><span>💧</span> AGUA</div>
+            <div id="bicho" class="tipo bicho"><span>🪲</span> BICHO</div>
+            <div id="dragon" class="tipo dragon"><span>🐉</span> DRAGÓN</div>
+            <div id="electrico" class="tipo electrico"><span>⚡</span> ELÉCTRICO</div>
+            <div id="fantasma" class="tipo fantasma"><span>👻</span> FANTASMA</div>
+            <div id="fuego" class="tipo fuego"><span>🔥</span> FUEGO</div>
+            <div id="hada" class="tipo hada"><span>🧚‍♂️</span> HADA</div>
+            <div id="hielo" class="tipo hielo"><span>❄️</span> HIELO</div>
+            <div id="lucha" class="tipo lucha"><span>✊</span> LUCHA</div>
+            <div id="normal" class="tipo normal"><span>⭕</span> NORMAL</div>
+            <div id="planta" class="tipo planta"><span>🌱</span> PLANTA</div>
+            <div id="psiquico" class="tipo psiquico"><span>🌀</span> PSÍQUICO</div>
+            <div id="roca" class="tipo roca"><span>🪨</span> ROCA</div>
+            <div id="siniestro" class="tipo siniestro"><span>👾</span> SINIESTRO</div>
+            <div id="tierra" class="tipo tierra"><span>⛰️</span> TIERRA</div>
+            <div id="veneno" class="tipo veneno"><span>🫙</span> VENENO</div>
+            <div id="volador" class="tipo volador"><span>🪽</span> VOLADOR</div>
+        </nav>
+    </header>
+    <section class="buscador">
+        <input type="text" class="search" id="search" placeholder="🔎 Buscar un pokemon...">
+    </section>
+    <main>
+        <div id="carta" class="carta">
+            <h4 id="nombrePokemon" class="nombrePokemon">Nombre</h4>
+            <div class="containerImagenPokemon">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png" alt="Imagen Pokemon" class="imagenPokemon" id="imagenPokemon">
+            </div>
+            <div class="numeracion">
+                #<span id="numeroCarta" class="numeroCarta">12</span>
+            </div>
+        </div>
+    </main>
+    <script src="pokeApi.js"></script>
+</body>
+</html>
