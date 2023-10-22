@@ -9,19 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const URL_POKEMONS = "https://pokeapi.co/api/v2/pokemon/";
+//Declarar variables globales para botones atras y siguiente
+let previous;
+let next;
 function renderPokemons(URL_POKEMONS) {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield fetch(URL_POKEMONS);
         const data = yield res.json();
         const resultadosPokemons = data.results;
-        resultadosPokemons.forEach((pokemonData) => __awaiter(this, void 0, void 0, function* () {
+        previous = data.previous; //Asignacion de boton
+        next = data.next; //Asignacion de boton
+        actualizarBotones();
+        const pokemonsParaRender = yield resultadosPokemons.map((pokemonData) => __awaiter(this, void 0, void 0, function* () {
             const nombre = pokemonData.name;
             const URL_POKEMON_DETALLES = pokemonData.url;
             const resDetalle = yield fetch(URL_POKEMON_DETALLES);
             const dataDetalle = yield resDetalle.json();
             const IDPokemon = dataDetalle.id;
             const imagenPokemon = dataDetalle.sprites.other["official-artwork"].front_default;
-            let cartaPokemonHTML = `
+            return `
           <div id="carta_${IDPokemon}" class="carta">
               <h4 id="nombrePokemon" class="nombrePokemon">${nombre}</h4>
               <div class="containerImagenPokemon">
@@ -32,11 +38,30 @@ function renderPokemons(URL_POKEMONS) {
               </div>
           </div>
         `;
-            const contenedorCartas = document.getElementById('contenedorCartas');
-            contenedorCartas.innerHTML += cartaPokemonHTML;
         }));
+        const contenedorCartas = document.getElementById('contenedorCartas');
+        contenedorCartas.innerHTML = "";
+        (yield Promise.all(pokemonsParaRender)).forEach((cartaPokemonHTML) => {
+            contenedorCartas.innerHTML += cartaPokemonHTML;
+        });
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
     renderPokemons(URL_POKEMONS);
 });
+function actualizarBotones() {
+    const btnAtrasEl = document.getElementById('botonAtras');
+    const btnSiguienteEl = document.getElementById('botonSiguiente');
+    if (previous === null) {
+        btnAtrasEl.style.display = "none";
+    }
+    else {
+        btnAtrasEl.style.display = "initial";
+    }
+    btnAtrasEl.addEventListener('click', () => {
+        renderPokemons(previous);
+    }, { once: true });
+    btnSiguienteEl.addEventListener('click', () => {
+        renderPokemons(next);
+    }, { once: true });
+}

@@ -29,6 +29,7 @@
 header{
     border: solid black 4px;
     max-width: 1024px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -36,6 +37,7 @@ header{
     text-align: center;
     background-color: violet;
     color: blue;
+    width: 100%;
 }
 
 .flex{
@@ -115,10 +117,11 @@ header{
 }
 
 .buscador {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 5px;
+  padding: 10px;
+
 }
 .search{
   width: 500px;
