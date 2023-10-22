@@ -137,7 +137,7 @@ main{
 }
 .nombrePokemon{
   text-align: center;
-
+  text-transform: uppercase;
 }
 .containerImagenPokemon{
   width: 100%;
@@ -153,4 +153,10 @@ main{
 .numeracion{
   display: flex;
   justify-content: flex-end;
+}
+
+.contenedorCartas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
