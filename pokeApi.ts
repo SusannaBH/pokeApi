@@ -46,19 +46,23 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPokemons(URL_POKEMONS)
 })
 
-function actualizarBotones(){
-  const btnAtrasEl = document.getElementById('botonAtras') as HTMLButtonElement;
+
+const btnAtrasEl = document.getElementById('botonAtras') as HTMLButtonElement;
   const btnSiguienteEl = document.getElementById('botonSiguiente') as HTMLButtonElement;
-  
+
+function actualizarBotones(){
   if(previous === null){
       btnAtrasEl.style.display = "none";
   } else {
     btnAtrasEl.style.display = "initial";
   }
-  btnAtrasEl.addEventListener('click', () => {
-    renderPokemons(previous);
-  }, {once: true})
-  btnSiguienteEl.addEventListener('click',() => {
-    renderPokemons(next);
-  }, {once: true})
+  
 }
+
+btnAtrasEl.addEventListener('click', () => {
+    renderPokemons(previous);
+  })
+
+btnSiguienteEl.addEventListener('click',() => {
+    renderPokemons(next);
+  })
