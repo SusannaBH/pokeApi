@@ -49,19 +49,19 @@ function renderPokemons(URL_POKEMONS) {
 document.addEventListener("DOMContentLoaded", () => {
     renderPokemons(URL_POKEMONS);
 });
+const btnAtrasEl = document.getElementById('botonAtras');
+const btnSiguienteEl = document.getElementById('botonSiguiente');
 function actualizarBotones() {
-    const btnAtrasEl = document.getElementById('botonAtras');
-    const btnSiguienteEl = document.getElementById('botonSiguiente');
     if (previous === null) {
         btnAtrasEl.style.display = "none";
     }
     else {
         btnAtrasEl.style.display = "initial";
     }
-    btnAtrasEl.addEventListener('click', () => {
-        renderPokemons(previous);
-    }, { once: true });
-    btnSiguienteEl.addEventListener('click', () => {
-        renderPokemons(next);
-    }, { once: true });
 }
+btnAtrasEl.addEventListener('click', () => {
+    renderPokemons(previous);
+});
+btnSiguienteEl.addEventListener('click', () => {
+    renderPokemons(next);
+});
