@@ -37,7 +37,8 @@ async function renderPokemons(URL_POKEMONS: string) {
 
   const contenedorCartas = document.getElementById('contenedorCartas') as HTMLElement;
   contenedorCartas.innerHTML = "";
-  (await Promise.all(pokemonsParaRender)).forEach((cartaPokemonHTML: string) => {
+  const promesasResueltas = await Promise.all(pokemonsParaRender)
+  promesasResueltas.forEach((cartaPokemonHTML: string) => {
     contenedorCartas.innerHTML += cartaPokemonHTML;
   });
 }

@@ -41,7 +41,8 @@ function renderPokemons(URL_POKEMONS) {
         }));
         const contenedorCartas = document.getElementById('contenedorCartas');
         contenedorCartas.innerHTML = "";
-        (yield Promise.all(pokemonsParaRender)).forEach((cartaPokemonHTML) => {
+        const promesasResueltas = yield Promise.all(pokemonsParaRender);
+        promesasResueltas.forEach((cartaPokemonHTML) => {
             contenedorCartas.innerHTML += cartaPokemonHTML;
         });
     });
