@@ -20,6 +20,17 @@ function renderPokemons(URL_POKEMONS) {
         previous = data.previous; //Asignacion de boton
         next = data.next; //Asignacion de boton
         actualizarBotones();
+        const pokemonsParaRender = yield plantillaArray(resultadosPokemons);
+        const contenedorCartas = document.getElementById('contenedorCartas');
+        contenedorCartas.innerHTML = "";
+        const promesasResueltas = yield Promise.all(pokemonsParaRender);
+        promesasResueltas.forEach((cartaPokemonHTML) => {
+            contenedorCartas.innerHTML += cartaPokemonHTML;
+        });
+    });
+}
+function plantillaArray(resultadosPokemons) {
+    return __awaiter(this, void 0, void 0, function* () {
         const pokemonsParaRender = yield resultadosPokemons.map((pokemonData) => __awaiter(this, void 0, void 0, function* () {
             const nombre = pokemonData.name;
             const URL_POKEMON_DETALLES = pokemonData.url;
@@ -39,12 +50,7 @@ function renderPokemons(URL_POKEMONS) {
           </div>
         `;
         }));
-        const contenedorCartas = document.getElementById('contenedorCartas');
-        contenedorCartas.innerHTML = "";
-        const promesasResueltas = yield Promise.all(pokemonsParaRender);
-        promesasResueltas.forEach((cartaPokemonHTML) => {
-            contenedorCartas.innerHTML += cartaPokemonHTML;
-        });
+        return pokemonsParaRender;
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
@@ -65,4 +71,55 @@ btnAtrasEl.addEventListener('click', () => {
 });
 btnSiguienteEl.addEventListener('click', () => {
     renderPokemons(next);
+});
+//TIPOS
+const aceroEl = document.getElementById('acero');
+const aguaEl = document.getElementById('agua');
+const bichoEl = document.getElementById('bicho');
+const dragonEl = document.getElementById('dragon');
+const electricoEl = document.getElementById('electrico');
+const fantasmaEl = document.getElementById('fantasma');
+const fuegoEl = document.getElementById('fuego');
+const hadaEl = document.getElementById('hada');
+const hieloEl = document.getElementById('hielo');
+const luchaEl = document.getElementById('lucha');
+const normalEl = document.getElementById('normal');
+const plantaEl = document.getElementById('planta');
+const psiquicoEl = document.getElementById('psiquico');
+const rocaEl = document.getElementById('roca');
+const siniestroEl = document.getElementById('siniesto');
+const tierraEl = document.getElementById('tierra');
+const venenoEl = document.getElementById('veneno');
+const voladorEl = document.getElementById('volador');
+function fetchTipo(url_tipo) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const resTipo = yield fetch(url_tipo);
+        const data = yield resTipo.json();
+        const pokemons = data.pokemon;
+        return pokemons;
+    });
+}
+aceroEl.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    const pokemonsArrayCompleto = yield fetchTipo("https://pokeapi.co/api/v2/type/9/");
+    const pokemonsArrayBase = pokemonsArrayCompleto.map((pokemonCompleto) => {
+        const nombre = pokemonCompleto.pokemon.name;
+        const url_pkm = pokemonCompleto.pokemon.url;
+        return {
+            name: nombre,
+            url: url_pkm // url var
+        };
+    });
+    // llamamos a plantillaArray() pasandole el pokemonsArrayBase
+    plantillaArray(pokemonsArrayBase);
+    // rendering
+    const pokemonsParaRender = yield plantillaArray(pokemonsArrayBase);
+    const contenedorCartas = document.getElementById('contenedorCartas');
+    contenedorCartas.innerHTML = "";
+    const promesasResueltas = yield Promise.all(pokemonsParaRender);
+    promesasResueltas.forEach((cartaPokemonHTML) => {
+        contenedorCartas.innerHTML += cartaPokemonHTML;
+    });
+}));
+aguaEl.addEventListener('click', () => {
+    fetchTipo("https://pokeapi.co/api/v2/type/11/");
 });
